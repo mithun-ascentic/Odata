@@ -38,5 +38,12 @@
             <returns></returns>
             
         </member>
+        <member name="M:Odata_1.Controllers.SaleController.Get(System.Int32)">
+            <summary>
+            Gets the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

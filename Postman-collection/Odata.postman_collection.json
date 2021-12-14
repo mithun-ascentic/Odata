@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "748efe41-3b5e-46c1-85f0-c60c5ebf3e2e",
+		"name": "Odata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:44318/odata/Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44318/odata/Product",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"odata",
+						"Product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44318/odata/Product?$filter=name eq 'Test'",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"odata",
+						"Product"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "name eq 'Test'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "top",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/odata/Product?$top=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"odata",
+						"Product"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "select",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44318/odata/Product?$select=id,name",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"odata",
+						"Product"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "id,name"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44318/odata/Product(2)",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44318",
+					"path": [
+						"odata",
+						"Product(2)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orderBy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/odata/Product?$orderby=name desc,Price",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"odata",
+						"Product"
+					],
+					"query": [
+						{
+							"key": "$orderby",
+							"value": "name desc,Price"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "navigationProperty",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/odata/Sale?$select=Year,Amount&$expand=product($select=name,price;$expand=Sales($select=year,amount))",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"odata",
+						"Sale"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Year,Amount"
+						},
+						{
+							"key": "$expand",
+							"value": "product($select=name,price;$expand=Sales($select=year,amount))"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paging",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/odata/Product?$top=1&$skip=2&$count=true",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"odata",
+						"Product"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "1"
+						},
+						{
+							"key": "$skip",
+							"value": "2"
+						},
+						{
+							"key": "$count",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagongCount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/odata/sale?$count=true",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"odata",
+						"sale"
+					],
+					"query": [
+						{
+							"key": "$count",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/odata/sale?$count=true&$skip=4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"odata",
+						"sale"
+					],
+					"query": [
+						{
+							"key": "$count",
+							"value": "true"
+						},
+						{
+							"key": "$skip",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

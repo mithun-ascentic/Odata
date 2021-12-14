@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Results;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
@@ -44,17 +45,18 @@ namespace Odata_1.Controllers
         }
 
 
-        ///// <summary>
-        ///// Gets the specified key.
-        ///// </summary>
-        ///// <param name="key">The key.</param>
-        ///// <returns></returns>
-        //[EnableQuery]
-        //public async Task<IActionResult> Get(int key)
-        //{
-        //    var productQ = sampleDb.Sale.Where(a => a.Id == key);
+        /// <summary>
+        /// Gets the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        [HttpGet("GetSales")]
+        [EnableQuery]
+        public async Task<IActionResult> Get([FromODataUri] int key)
+        {
+            var productQ = sampleDb.Sale.Where(a => a.Id == key);
 
-        //    return Ok(SingleResult.Create(productQ));
-        //}
+            return Ok(SingleResult.Create(productQ));
+        }
     }
 }
