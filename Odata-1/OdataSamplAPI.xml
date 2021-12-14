@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Odata-1</name>
+    </assembly>
+    <members>
+        <member name="M:Odata_1.Controllers.ProductController.#ctor(Odata_1.SampleDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Odata_1.Controllers.ProductController"/> class.
+            </summary>
+            <param name="dbContext">The database context.</param>
+            <exception cref="T:System.ArgumentNullException">dbContext</exception>
+        </member>
+        <member name="M:Odata_1.Controllers.ProductController.Get">
+            <summary>
+            Gets this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Odata_1.Controllers.ProductController.GetProduct(System.Int32)">
+            <summary>
+            Gets the product.
+            </summary>
+            <param name="productID">The product identifier.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
