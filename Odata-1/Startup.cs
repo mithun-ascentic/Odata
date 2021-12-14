@@ -1,13 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.OData;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
-
 using System;
+using System.Linq;
 
 namespace Odata_1
 {
@@ -49,6 +51,8 @@ namespace Odata_1
                     Title = "Sample OData",
                 });
 
+                object[] array = new object[] { };
+                //c.DocumentFilter<CustomDocumentFilter>(array);
                 //var jwtSecurityScheme = new OpenApiSecurityScheme
                 //{
                 //    Scheme = "bearer",
@@ -72,6 +76,8 @@ namespace Odata_1
                 //        { jwtSecurityScheme, Array.Empty<string>() }
                 //    });
             });
+
+            AddFormaters(services);
             #endregion
 
         }
@@ -98,6 +104,8 @@ namespace Odata_1
                 string swaggerJsonBasePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? "." : "..";
                 c.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "BookStoreAPI");
             });
+
+          
             #endregion
 
             app.UseAuthorization();
@@ -105,6 +113,21 @@ namespace Odata_1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+        }
+
+        private void AddFormaters(IServiceCollection services)
+        {
+            services.AddMvcCore(options =>
+            {
+                foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                {
+                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
+                foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                {
+                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
             });
         }
     }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Odata_1.Controllers
 {
-    [Route("odata")]
+    [Route("api/[controller]")]
     [ApiController]
     public class SaleController : ODataController
     {
