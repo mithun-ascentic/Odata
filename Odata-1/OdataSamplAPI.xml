@@ -24,5 +24,19 @@
             <param name="productID">The product identifier.</param>
             <returns></returns>
         </member>
+        <member name="M:Odata_1.Controllers.SaleController.#ctor(Odata_1.SampleDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Odata_1.Controllers.SaleController"/> class.
+            </summary>
+            <param name="dbContext">The database context.</param>
+            <exception cref="T:System.ArgumentNullException">dbContext</exception>
+        </member>
+        <member name="M:Odata_1.Controllers.SaleController.Get">
+            <summary>
+            Gets this instance.
+            </summary>
+            <returns></returns>
+            
+        </member>
     </members>
 </doc>

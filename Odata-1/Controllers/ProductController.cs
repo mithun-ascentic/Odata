@@ -34,9 +34,16 @@ namespace Odata_1.Controllers
         /// <returns></returns>
         [HttpGet()]
         [EnableQuery]
-        public async Task<IActionResult> Get()
+        //public async Task<IActionResult> Get()
+        //{
+        //    //return Ok(await sampleDb.Product.ToListAsync());
+        //    return Ok(await sampleDb.Product.ToListAsync());
+        //}
+
+        public IActionResult Get()
         {
-            return Ok(await sampleDb.Product.ToListAsync());
+           // return Ok(await sampleDb.Product.ToListAsync());
+            return Ok(sampleDb.Product);
         }
 
         /// <summary>
